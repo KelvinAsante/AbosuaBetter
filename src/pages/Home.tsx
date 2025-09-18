@@ -33,6 +33,24 @@ function HeroSlideshow() {
 }
 
 const Home = () => {
+  // Brand section data
+  const brands = [
+    {
+      title: "Abusua Bitters Bottle",
+      description: "Abusua Bitters is crafted from a blend of natural herbs, providing a unique and refreshing herbal experience. Enjoy the authentic taste and tradition of Abusua Herbal Center.",
+  img: "/Abusua Bitters yellow.png"
+    },
+    {
+      title: "Abusua Bitters Sachet",
+      description: "Experience the same great herbal blend in a convenient sachet. Perfect for on-the-go enjoyment, Abusua Bitters Sachet delivers quality and tradition in every sip.",
+      img: "/Abusua shachet.png"
+    },
+    {
+      title: "Abusua Bitters Promo",
+      description: "Discover the spirit of Abusua Bitters. Our promotional pack highlights the rich heritage and premium quality of our herbal bitters, trusted by many.",
+      img: "/Abusua Betters.png"
+    }
+  ];
   const features = [
     {
       icon: <Leaf className="h-8 w-8 text-primary" />,
@@ -67,6 +85,26 @@ const Home = () => {
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative z-10 w-full flex flex-col items-center justify-center text-center py-16">
           <HeroSlideshow />
+        </div>
+      </section>
+
+      {/* Abusua Bitters Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center mb-4">ABUSUA BITTERS</h2>
+          <p className="text-center text-lg text-gray-600 mb-10 max-w-3xl mx-auto">
+            Abusua Bitters is a premium herbal beverage made from carefully selected natural ingredients. Rooted in tradition and crafted for quality, Abusua Bitters delivers a refreshing and authentic taste experience.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {brands.map((brand, idx) => (
+              <div key={idx} className="bg-white rounded-xl shadow-md flex flex-col items-center p-6">
+                <img src={brand.img} alt={brand.title} className="w-full h-64 object-contain rounded-lg mb-4 bg-gray-50" />
+                <h3 className="text-xl font-bold text-center mb-2">{brand.title}</h3>
+                <p className="text-gray-700 text-center mb-4">{brand.description}</p>
+                <button className="bg-green-700 text-white px-6 py-2 rounded font-semibold hover:bg-green-800 transition">Buy Me</button>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
       

@@ -42,10 +42,10 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 w-full z-50 border-b border-border transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white shadow-lg"
-          : "bg-transparent"
+          ? "bg-white shadow-lg border-b border-border"
+          : "bg-transparent border-none"
       }`}
       style={{ backdropFilter: scrolled ? "blur(8px)" : "none" }}
     >
