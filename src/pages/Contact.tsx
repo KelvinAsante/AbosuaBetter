@@ -49,7 +49,7 @@ const Contact = () => {
     {
       icon: <Phone className="h-6 w-6 text-primary" />,
       title: "Phone",
-      details: ["+233 24 000 0000", "+233 30 123 4567"],
+      details: ["+233 59 272 0844"],
       subtitle: "Mon-Fri: 8AM-6PM"
     },
     {
@@ -61,7 +61,7 @@ const Contact = () => {
     {
       icon: <MapPin className="h-6 w-6 text-primary" />,
       title: "Head Office",
-      details: ["123 Heritage Avenue", "Accra, Ghana"],
+      details: ["Abusua herbal center", "kumasi, Ghana"],
       subtitle: "Visit by appointment"
     },
     {
@@ -251,14 +251,14 @@ const Contact = () => {
               size="lg" 
               className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8 py-3 rounded-full font-semibold"
             >
-              Call: +233 24 000 0000
+              Call: +233 59 272 0844
             </Button>
             <Button 
               variant="outline" 
               size="lg"
               className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-3 rounded-full font-semibold"
             >
-              WhatsApp: +233 24 000 0000
+              WhatsApp: +233 59 272 0844
             </Button>
           </div>
           

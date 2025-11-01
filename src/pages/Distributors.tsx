@@ -10,7 +10,7 @@ const Distributors = () => {
       name: "Premium Spirits Ghana",
       location: "Accra, Greater Accra Region",
       address: "123 Oxford Street, Osu, Accra",
-      phone: "+233 24 123 4567",
+      phone: "+233 59-272-0844",
       email: "info@premiumspirits.gh",
       hours: "Mon-Sat: 9AM-8PM",
       region: "Greater Accra"
@@ -20,7 +20,7 @@ const Distributors = () => {
       name: "Ashanti Beverages Ltd",
       location: "Kumasi, Ashanti Region",
       address: "45 Kejetia Market, Kumasi",
-      phone: "+233 32 456 7890",
+      phone: "+233 59-272-0844",
       email: "sales@ashantibev.com",
       hours: "Mon-Fri: 8AM-6PM",
       region: "Ashanti"
@@ -30,7 +30,7 @@ const Distributors = () => {
       name: "Northern Drinks Co.",
       location: "Tamale, Northern Region",
       address: "12 Central Market, Tamale",
-      phone: "+233 37 234 5678",
+      phone: "+233 59-272-0844",
       email: "orders@northerndrinks.com",
       hours: "Daily: 7AM-7PM",
       region: "Northern"
@@ -198,7 +198,7 @@ const Distributors = () => {
               size="lg"
               className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-3 rounded-full font-semibold"
             >
-              Call: +233 24 000 0000
+              Call: +233 59-272-0844
             </Button>
           </div>
         </div>
