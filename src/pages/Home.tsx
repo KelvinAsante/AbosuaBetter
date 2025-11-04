@@ -1,5 +1,5 @@
 import Navigation from "@/components/Navigation";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Leaf, Award, Heart, Globe } from "lucide-react";
@@ -20,6 +20,10 @@ function HeroSlideshow() {
       <img
         src={heroImages[current]}
         alt="Abusua Bitters Slide"
+        loading="lazy"
+        decoding="async"
+        width={1600}
+        height={600}
         className="w-full object-cover transition-all duration-700 rounded-none md:rounded-xl md:h-[600px] md:w-screen h-[40vh]"
         style={{
           minHeight: '200px',
@@ -33,6 +37,38 @@ function HeroSlideshow() {
 }
 
 const Home = () => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+
+    // Ensure video is muted to allow autoplay on most browsers
+    el.muted = true;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            // try to play, ignore errors (some browsers block autoplay unless muted)
+            el.play().catch(() => {});
+          } else {
+            // pause and rewind a little for a clean replay when user scrolls back
+            try {
+              el.pause();
+              // optional: reset to 0 for replay; comment out if you prefer pause position
+              el.currentTime = 0;
+            } catch (e) {}
+          }
+        });
+      },
+      { threshold: [0.25, 0.5, 0.75] }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   // Brand section data
   const brands = [
     {
@@ -88,6 +124,8 @@ const Home = () => {
         </div>
       </section>
 
+      
+
       {/* Abusua Bitters Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -98,7 +136,7 @@ const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {brands.map((brand, idx) => (
               <div key={idx} className="bg-white rounded-xl shadow-md flex flex-col items-center p-6">
-                <img src={brand.img} alt={brand.title} className="w-full h-64 object-contain rounded-lg mb-4 bg-gray-50" />
+                <img src={brand.img} alt={brand.title} loading="lazy" decoding="async" width={400} height={256} className="w-full h-64 object-contain rounded-lg mb-4 bg-gray-50" />
                 <h3 className="text-xl font-bold text-center mb-2">{brand.title}</h3>
                 <p className="text-gray-700 text-center mb-4">{brand.description}</p>
                 <button className="bg-green-700 text-white px-6 py-2 rounded font-semibold hover:bg-green-800 transition">Buy Me</button>
@@ -108,6 +146,29 @@ const Home = () => {
         </div>
       </section>
       
+      {/* Video Section - shows video from public folder */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6">Watch Our Story</h2>
+          <div className="w-full relative">
+            <video
+              ref={videoRef}
+              src="/abusua-video2.mp4"
+              controls
+              muted
+              playsInline
+              poster="/placeholder.svg"
+              className="w-full h-auto rounded-lg shadow-md"
+              preload="none"
+              aria-label="Abusua Bitters promotional video"
+            >
+              Sorry, your browser doesn't support embedded videos. You can
+              <a href="/abusua-video2.mp4" className="text-primary underline ml-1">download the video</a> instead.
+            </video>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-16 bg-gradient-subtle">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -69,12 +69,16 @@ const About = () => {
             </div>
             
             <div className="relative">
-              <img 
-                src={ingredientsImage} 
-                alt="Natural ingredients" 
-                className="w-full h-96 object-cover rounded-2xl shadow-premium"
+              <img
+                src={ingredientsImage}
+                alt="Natural ingredients"
+                loading="lazy"
+                decoding="async"
+                width={1200}
+                height={800}
+                className="w-full h-56 sm:h-72 md:h-96 object-cover object-center rounded-2xl shadow-premium"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl pointer-events-none"></div>
             </div>
           </div>
         </div>
